@@ -13,13 +13,14 @@ app.initializers.add('davidnery/flarum-nickname-group-formatter', () => {
       return;
     }
 
-    const primaryGroup = user.groups()[0];
-    const color = primaryGroup.attribute('color');
-    const displayStyle = primaryGroup.attribute('displayStyle');
-
+    const primaryGroup = user.groups().find(group => group.attribute('displayStyle') !== null);
+    
     if (!displayStyle) {
       return;
     }
+    
+    const color = primaryGroup.attribute('color');
+    const displayStyle = primaryGroup.attribute('displayStyle');
 
     this.$('.username').html(
       displayStyle.replace('{username}', user.displayName())
