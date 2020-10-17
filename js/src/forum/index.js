@@ -15,7 +15,7 @@ app.initializers.add('davidnery/flarum-nickname-group-formatter', () => {
 
     const primaryGroup = user.groups().find(group => group.attribute('displayStyle') !== null);
     
-    if (!displayStyle) {
+    if (!primaryGroup) {
       return;
     }
     
