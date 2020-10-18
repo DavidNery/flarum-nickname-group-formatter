@@ -1,0 +1,4 @@
+davidnery-nickname-group-formatter:
+  admin:
+    display: Como o nick dos usuários do grupo será exibido?
+    optional: Não obrigatório
