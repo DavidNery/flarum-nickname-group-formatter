@@ -5,7 +5,7 @@ import PostUser from 'flarum/components/PostUser';
 // import { extend } from '../../../../../vendor/flarum/core/js/src/common/extend';
 // import PostUser from '../../../../../vendor/flarum/core/js/src/forum/components/PostUser';
 
-app.initializers.add('davidnery/flarum-nickname-group-formatter', () => {
+app.initializers.add('davidnery/nickname-group-formatter', () => {
   extend(PostUser.prototype, 'view', function (content) {
     const user = this.props.post.user();
     

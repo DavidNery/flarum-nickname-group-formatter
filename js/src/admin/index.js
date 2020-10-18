@@ -5,7 +5,7 @@ import EditGroupModal from 'flarum/components/EditGroupModal';
 // import { extend } from '../../../../../vendor/flarum/core/js/src/common/extend';
 // import EditGroupModal from '../../../../../vendor/flarum/core/js/src/admin/components/EditGroupModal';
 
-app.initializers.add('davidnery/flarum-nickname-group-formatter', () => {
+app.initializers.add('davidnery/nickname-group-formatter', () => {
   extend(EditGroupModal.prototype, 'init', function() {
     this.displayStyle = m.prop(this.group.attribute('displayStyle') || '');
   });
@@ -20,9 +20,9 @@ app.initializers.add('davidnery/flarum-nickname-group-formatter', () => {
     items.add(
       'displayStyle',
       <div className="Form-group">
-        <label>Como o nick dos usuários do grupo será exibido?</label>
+        <label>{app.translator.trans('davidnery-nickname-group-formatter.admin.display')}</label>
         <div className="helpText">
-          NÃO obrigatório
+          {app.translator.trans('davidnery-nickname-group-formatter.admin.optional')}
         </div>
         <input className="FormControl" 
           placeholder='<span style="color: {groupcolor}">{username}</span>'
