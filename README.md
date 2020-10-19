@@ -1,6 +1,3 @@
-### TODO
-- [ ] Add support for other languages
-
 ### Prints
 Admin panel (group edit):
 

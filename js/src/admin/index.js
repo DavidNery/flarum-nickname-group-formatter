@@ -1,13 +1,9 @@
 import { extend } from 'flarum/extend';
 import EditGroupModal from 'flarum/components/EditGroupModal';
 
-// import { app } from '../../../../../vendor/flarum/core/js/src/forum';
-// import { extend } from '../../../../../vendor/flarum/core/js/src/common/extend';
-// import EditGroupModal from '../../../../../vendor/flarum/core/js/src/admin/components/EditGroupModal';
-
 app.initializers.add('davidnery/nickname-group-formatter', () => {
   extend(EditGroupModal.prototype, 'init', function() {
-    this.displayStyle = m.prop(this.group.attribute('displayStyle') || '');
+    this.displayStyle = m.prop(this.group.displayStyle() || '');
   });
 
   extend(EditGroupModal.prototype, 'submitData', function(data) {

@@ -1,30 +1,27 @@
 import { extend } from 'flarum/extend';
 import PostUser from 'flarum/components/PostUser';
-
-// import { app } from '../../../../../vendor/flarum/core/js/src/forum';
-// import { extend } from '../../../../../vendor/flarum/core/js/src/common/extend';
-// import PostUser from '../../../../../vendor/flarum/core/js/src/forum/components/PostUser';
+import { escape } from '../helpers/escape';
 
 app.initializers.add('davidnery/nickname-group-formatter', () => {
-  extend(PostUser.prototype, 'view', function (content) {
+  extend(PostUser.prototype, 'config', function () {
     const user = this.props.post.user();
     
     if (!user || !user.displayName()) {
       return;
     }
 
-    const primaryGroup = user.groups().find(group => group.attribute('displayStyle') !== null);
+    const primaryGroup = user.groups().find(group => group.displayStyle() !== null);
     
     if (!primaryGroup) {
       return;
     }
     
     const color = primaryGroup.attribute('color');
-    const displayStyle = primaryGroup.attribute('displayStyle');
+    const displayStyle = primaryGroup.displayStyle();
 
     this.$('.username').html(
-      displayStyle.replace('{username}', user.displayName())
-        .replace('{groupcolor}', color || '#FFF')
+      displayStyle.replace(/\{username\}/g, escape(user.displayName()))
+        .replace(/\{groupcolor\}/g, color || '#FFF')
     );
   });
 });
