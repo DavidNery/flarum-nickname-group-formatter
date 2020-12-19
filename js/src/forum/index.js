@@ -4,6 +4,9 @@ import { escape } from '../helpers/escape';
 
 app.initializers.add('davidnery/nickname-group-formatter', () => {
   extend(PostUser.prototype, 'config', function () {
+    // user card
+    if(this.element.lastChild.tagName === 'DIV') return;
+    
     const user = this.props.post.user();
     
     if (!user || !user.displayName()) {
